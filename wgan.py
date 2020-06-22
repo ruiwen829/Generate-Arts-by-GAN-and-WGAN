@@ -158,3 +158,45 @@ generated_image = generator(random_input)
 validity = discriminator(generated_image)
 combined = Model(random_input, validity)
 combined.compile(loss=wasserstein,optimizer=optimizer, metrics=['accuracy'])
+
+valid = np.ones((BATCH_SIZE, 1))
+fake = -np.ones((BATCH_SIZE, 1))
+
+discriminator.trainable = True
+
+fixed_noise = np.random.normal(0, 1, (PREVIEW_ROWS * PREVIEW_COLS, NOISE_SIZE))
+cnt = 1
+clip_threshold = 0.01
+
+for epoch in range(EPOCHS):
+
+    for _ in range(5):
+        idx = np.random.randint(0, training_data.shape[0], BATCH_SIZE)
+        x_real = training_data[idx]
+ 
+        noise= np.random.normal(0, 1, (BATCH_SIZE, NOISE_SIZE))
+        x_fake = generator.predict(noise)
+ 
+        discriminator_metric_real = discriminator.train_on_batch(x_real, valid) #training our discriminator model in both real and fake images separately.
+
+        discriminator_metric_generated = discriminator.train_on_batch(x_fake, fake)
+ 
+        discriminator_metric = 0.5 * np.add(discriminator_metric_real, discriminator_metric_generated)
+
+        for l in discriminator.layers:
+            weights = l.get_weights()
+            weights = [np.clip(w,-clip_threshold, clip_threshold) for w in weights]
+            l.set_weights(weights)
+
+    generator_metric = combined.train_on_batch(noise, valid)
+
+    if epoch % SAVE_FREQ == 0:
+        save_images(cnt, fixed_noise)
+        cnt += 1
+ 
+        print(f'{epoch} epoch, Discriminator accuracy: {100*  discriminator_metric[1]}, Generator accuracy: {100 * generator_metric[1]}')
+
+
+        discriminator.save('/content/drive/My Drive/WGAN/discriminator.h5')
+        generator.save('/content/drive/My Drive/WGAN/generator.h5')
+        combined.save('/content/drive/My Drive/WGAN/combined.h5')
