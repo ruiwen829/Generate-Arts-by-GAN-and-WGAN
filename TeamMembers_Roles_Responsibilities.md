@@ -6,6 +6,7 @@ Team: Group C
 Team Members: Elnaz A. Torkamani, Ruiwen Zhang, Sunit Nair
 Topic: GANdinsky - Generative Adversarial Network for creating art (portrait/abstract)
 
+
 Roles & Responsibilities:
 Common: GAN testing, experimentation (DCGAN/WGAN/CycleGAN)
 
