@@ -1,9 +1,13 @@
 # Team Members, Roles, and Responsibilities
 
-Course: Neural Networks & Deep Learning (Rutgers Business School) '\n'
+Course: Neural Networks & Deep Learning (Rutgers Business School) 
+
 Instructor: Dr. Farid Alizadeh
+
 Team: Group C
+
 Team Members: Elnaz A. Torkamani, Ruiwen Zhang, Sunit Nair
+
 Topic: GANdinsky - Generative Adversarial Network for creating art (portrait/abstract)
 
 
