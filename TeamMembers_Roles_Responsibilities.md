@@ -12,6 +12,7 @@ Topic: GANdinsky - Generative Adversarial Network for creating art (portrait/abs
 
 
 Roles & Responsibilities:
+
 Common: GAN testing, experimentation (DCGAN/WGAN/CycleGAN)
 
 Elnaz: Dataset curation, Presentation (sections 1-3), WGAN testing
