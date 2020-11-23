@@ -1,6 +1,6 @@
 # Team Members, Roles, and Responsibilities
 
-Course: Neural Networks & Deep Learning (Rutgers Business School)
+Course: Neural Networks & Deep Learning (Rutgers Business School) '\n'
 Instructor: Dr. Farid Alizadeh
 Team: Group C
 Team Members: Elnaz A. Torkamani, Ruiwen Zhang, Sunit Nair
